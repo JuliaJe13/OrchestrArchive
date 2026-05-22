@@ -21,6 +21,7 @@ public class Category {
     @NotBlank
     private String name;
     private String description;
+    private int level;
 
     public Category() {
 
