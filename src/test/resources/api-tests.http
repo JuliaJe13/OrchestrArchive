@@ -1,0 +1,21 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+### Alle Kategorien
+GET http://localhost:8080/api/categories
+
+### Kategorien erstellen
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "genre": "Marsch",
+  "description": "Festliche Märsche"
+}
+
+### Alle Notensätze
+GET http://localhost:8080/api/sheet-music
+
+### Alle Stimmen
+GET http://localhost:8080/api/voice-parts
