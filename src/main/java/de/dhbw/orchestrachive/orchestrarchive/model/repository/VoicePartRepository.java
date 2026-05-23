@@ -8,4 +8,5 @@ import java.util.List;
 public interface VoicePartRepository extends JpaRepository<VoicePart, Long> {
 
     List<VoicePart> findByInstrumentContainingIgnoreCase(String instrument);
+    List<VoicePart> findByInstrumentGroupContainingIgnoreCase(String instrumentGroup);
 }

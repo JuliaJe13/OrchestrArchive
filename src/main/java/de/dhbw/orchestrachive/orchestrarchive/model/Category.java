@@ -19,9 +19,8 @@ public class Category {
     private Long id;
 
     @NotBlank
-    private String name;
+    private String genre;
     private String description;
-    private int level;
 
     public Category() {
 

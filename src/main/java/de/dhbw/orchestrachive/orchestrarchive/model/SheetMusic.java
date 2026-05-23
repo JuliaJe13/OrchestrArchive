@@ -23,6 +23,8 @@ public class SheetMusic {
     private int year;
     private String publisher;
 
+    private DifficultyLevel level;
+
     @ManyToMany
     @JoinTable(
             name = "sheet_music_categories",
