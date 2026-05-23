@@ -20,8 +20,13 @@ public class SheetMusic {
     private String title;
     private String composer;
     private String arranger;
+
+    @Column(name = "release_year")
     private int year;
+
     private String publisher;
+
+    private DifficultyLevel level;
 
     @ManyToMany
     @JoinTable(
