@@ -3,6 +3,7 @@ package de.dhbw.orchestrachive.orchestrarchive.controller;
 import de.dhbw.orchestrachive.orchestrarchive.model.DifficultyLevel;
 import de.dhbw.orchestrachive.orchestrarchive.model.SheetMusic;
 import de.dhbw.orchestrachive.orchestrarchive.service.SheetMusicService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,7 +57,7 @@ public class SheetMusicController {
     }
 
     @PostMapping
-    public ResponseEntity<SheetMusic> create(@RequestBody SheetMusic request) {
+    public ResponseEntity<SheetMusic> create(@Valid @RequestBody SheetMusic request) {
         SheetMusic created = service.create(request);
         return ResponseEntity
                 .created(URI.create("/api/sheet-music/" + created.getId()))
@@ -64,7 +65,7 @@ public class SheetMusicController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SheetMusic> update(@PathVariable Long id, @RequestBody SheetMusic request) {
+    public ResponseEntity<SheetMusic> update(@PathVariable Long id, @Valid @RequestBody SheetMusic request) {
         return service.update(id, request)
                 .map(ResponseEntity::ok)
                 .orElse((ResponseEntity.notFound().build()));

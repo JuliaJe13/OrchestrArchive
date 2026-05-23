@@ -2,6 +2,7 @@ package de.dhbw.orchestrachive.orchestrarchive.controller;
 
 import de.dhbw.orchestrachive.orchestrarchive.model.Category;
 import de.dhbw.orchestrachive.orchestrarchive.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> create(@RequestBody Category request) {
+    public ResponseEntity<Category> create(@Valid @RequestBody Category request) {
         Category created = service.create(request);
         return ResponseEntity
                 .created(URI.create("/api/categories/" + created.getId()))
@@ -39,7 +40,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category request) {
+    public ResponseEntity<Category> update(@PathVariable Long id, @Valid @RequestBody Category request) {
         return service.update(id, request)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
