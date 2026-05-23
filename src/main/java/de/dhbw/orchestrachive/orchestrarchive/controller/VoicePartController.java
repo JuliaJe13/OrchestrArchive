@@ -2,6 +2,7 @@ package de.dhbw.orchestrachive.orchestrarchive.controller;
 
 import de.dhbw.orchestrachive.orchestrarchive.model.VoicePart;
 import de.dhbw.orchestrachive.orchestrarchive.service.VoicePartService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +39,7 @@ public class VoicePartController {
                 .orElse(ResponseEntity.notFound().build());
     }
     @PostMapping
-    public ResponseEntity<VoicePart> create(@RequestBody VoicePart request) {
+    public ResponseEntity<VoicePart> create(@Valid @RequestBody VoicePart request) {
         VoicePart created = service.create(request);
         return ResponseEntity
                 .created(URI.create("/api/voice-parts/" + created.getId()))
@@ -46,7 +47,7 @@ public class VoicePartController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VoicePart> update(@PathVariable Long id, @RequestBody VoicePart request) {
+    public ResponseEntity<VoicePart> update(@PathVariable Long id, @Valid @RequestBody VoicePart request) {
         return service.update(id, request)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

@@ -39,4 +39,13 @@ public class SheetMusic {
     public SheetMusic() {
 
     }
+
+    public SheetMusic(String title, String composer, String arranger, int year, String publisher, DifficultyLevel level) {
+        this.title = title;
+        this.composer = composer;
+        this.arranger = arranger;
+        this.year = year;
+        this.publisher = publisher;
+        this.level = level;
+    }
 }

@@ -27,4 +27,12 @@ public class VoicePart {
     public VoicePart() {
 
     }
+
+    public VoicePart(String instrument, int partNumber, String instrumentGroup, int sheetCount, SheetMusic sheetMusic) {
+        this.instrument = instrument;
+        this.partNumber = partNumber;
+        this.instrumentGroup = instrumentGroup;
+        this.sheetCount = sheetCount;
+        this.sheetMusic = sheetMusic;
+    }
 }
