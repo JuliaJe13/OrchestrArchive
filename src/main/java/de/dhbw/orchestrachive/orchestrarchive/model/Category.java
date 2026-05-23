@@ -25,4 +25,8 @@ public class Category {
     public Category() {
 
     }
+    public Category(String genre, String description) {
+        this.genre = genre;
+        this.description = description;
+    }
 }
