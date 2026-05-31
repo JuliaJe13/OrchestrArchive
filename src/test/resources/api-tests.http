@@ -19,3 +19,6 @@ GET http://localhost:8080/api/sheet-music
 
 ### Alle Stimmen
 GET http://localhost:8080/api/voice-parts
+
+### MusicBrainz Suche
+GET http://localhost:8080/api/music-search?title=Alte+Kameraden
