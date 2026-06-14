@@ -1,5 +1,6 @@
 import './App.css'
 import CategoryList from './components/CategoryList'
+import SheetMusicList from "./components/SheetMusicList.tsx";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <main>
         <h2>Kategorien</h2>
         <CategoryList />
+        <h2>Notensätze</h2>
+        <SheetMusicList />
       </main>
     </div>
   )
