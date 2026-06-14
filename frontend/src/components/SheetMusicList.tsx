@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 import type { SheetMusic } from '../types'
 import { getSheetMusicList } from '../api/orchestrArchiveApi'
 
-function SheetMusicList() {
+type SheetMusicListProps = {
+    onSelect: (id: number) => void
+}
+
+function SheetMusicList({ onSelect }: SheetMusicListProps) {
     const [sheetMusicList, setSheetMusicList] = useState<SheetMusic[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState < string | null > (null)
@@ -46,6 +50,7 @@ function SheetMusicList() {
                     {' - '}{obj.composer}
                     {' ('}{obj.year}{')'}
                     {' - '}{obj.level}
+                    <button onClick={() => onSelect(obj.id)}>Details</button>
                 </li>
             ))}
         </ul>
