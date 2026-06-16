@@ -3,6 +3,7 @@ import {useState} from "react";
 import CategoryList from './components/CategoryList'
 import SheetMusicList from './components/SheetMusicList.tsx'
 import SheetMusicDetail from './components/SheetMusicDetail.tsx'
+import SheetMusicSearch from "./components/SheetMusicSearch.tsx";
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <h2>Notensätze</h2>
         <SheetMusicList onSelect={setSelectedId} />
         {selectedId && <SheetMusicDetail id={selectedId} />}
+          <h2>Suche</h2>
+          <SheetMusicSearch />
       </main>
     </div>
   )
