@@ -4,6 +4,7 @@ import CategoryList from './components/CategoryList'
 import SheetMusicList from './components/SheetMusicList.tsx'
 import SheetMusicDetail from './components/SheetMusicDetail.tsx'
 import SheetMusicSearch from "./components/SheetMusicSearch.tsx";
+import SheetMusicForm from "./components/SheetMusicForm.tsx";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         {selectedId && <SheetMusicDetail id={selectedId} />}
           <h2>Suche</h2>
           <SheetMusicSearch />
+          <h2>Neuen Notensatz hinzufügen</h2>
+          <SheetMusicForm />
       </main>
     </div>
   )
