@@ -14,35 +14,55 @@ and search for music information using the MusicBrainz API.
 - **API Documentation:** Swagger UI available at `/swagger-ui.html`
 
 ### Project Structure
-frontend separately
-
-backend/
-├── controller/    # REST endpoints
-├── service/       # Business logic
-├── model/         # JPA entities
-├── repository/    # Data access
-├── exception/     # Error handling
-└── config/        # Configuration
+OrchestrArchive/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── api/
+│   │   └── types.ts
+├── src/main/java/
+│   ├── controller/
+│   ├── service/
+│   ├── model/
+│   ├── repository/
+│   ├── exception/
+│   └── config/
+├── Dockerfile
+└── docker-compose.yml
 
 ## Getting Started
 
-### Prerequisites
-- Java 21
-- Node.js 18+
+### Option 1: Docker (recommended)
+**Prerequisites:** Docker Desktop
 
-### Backend
 ```bash
+# 1. Build backend
+./mvnw package -DskipTests
+
+# 2. Build frontend
+cd frontend && npm run build && cd ..
+
+# 3. Start everything
+docker compose up
+```
+App runs on http://localhost
+
+### Option 2: Local Development
+**Prerequisites:** Java 21, Node.js 20+
+
+```bash
+# Backend
 ./mvnw spring-boot:run
 ```
-Backend runs on http://localhost:8080
+Backend: http://localhost:8080
 
-### Frontend
 ```bash
+# Frontend (separate terminal)
 cd frontend
 npm install
 npm run dev
 ```
-Frontend runs on http://localhost:5173
+Frontend: http://localhost:5173
 
 ## Third-Party APIs
 - **MusicBrainz API** (https://musicbrainz.org/doc/MusicBrainz_API)  
@@ -51,3 +71,8 @@ Frontend runs on http://localhost:5173
 
 ## API Documentation
 Swagger UI: http://localhost:8080/swagger-ui.html
+
+## Running Tests
+```bash
+mvn test
+```
