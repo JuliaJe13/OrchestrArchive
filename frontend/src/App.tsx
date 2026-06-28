@@ -1,33 +1,47 @@
+import { useState } from 'react'
+import Navigation from './components/Navigation'
+import SheetMusicSearch from './components/SheetMusicSearch'
+import SheetMusicForm from './components/SheetMusicForm'
+import SheetMusicList from './components/SheetMusicList'
+import SheetMusicDetail from './components/SheetMusicDetail'
 import './App.css'
-import {useState} from "react";
-import CategoryList from './components/CategoryList'
-import SheetMusicList from './components/SheetMusicList.tsx'
-import SheetMusicDetail from './components/SheetMusicDetail.tsx'
-import SheetMusicSearch from "./components/SheetMusicSearch.tsx";
-import SheetMusicForm from "./components/SheetMusicForm.tsx";
 
+type Tab = 'search' | 'add' | 'all'
 
 function App() {
-  const [selectedId, setSelectedId] = useState<number | null>(null)
+    const [activeTab, setActiveTab] = useState<Tab>('search')
+    const [selectedId, setSelectedId] = useState<number | null>(null)
 
-  return (
-    <div className="app">
-      <header>
-        <h1>OrchestrArchive</h1>
-      </header>
-      <main>
-        <h2>Kategorien</h2>
-        <CategoryList />
-        <h2>Notensätze</h2>
-        <SheetMusicList onSelect={setSelectedId} />
-        {selectedId && <SheetMusicDetail id={selectedId} />}
-          <h2>Suche</h2>
-          <SheetMusicSearch />
-          <h2>Neuen Notensatz hinzufügen</h2>
-          <SheetMusicForm />
-      </main>
-    </div>
-  )
+    return (
+        <div className="app">
+            <header>
+                <h1>OrchestrArchive</h1>
+                <p className="subtitle">Notenverwaltung für Orchester und Ensembles</p>
+            </header>
+            <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+            <main>
+                {activeTab === 'search' && (
+                    <div>
+                        <p className="intro">Durchsuche deine Notensammlung nach Titel, Komponist, Arrangeur und mehr.</p>
+                        <SheetMusicSearch />
+                    </div>
+                )}
+                {activeTab === 'add' && (
+                    <div>
+                        <h2>Neuen Notensatz hinzufügen</h2>
+                        <SheetMusicForm />
+                    </div>
+                )}
+                {activeTab === 'all' && (
+                    <div>
+                        <h2>Alle Notensätze</h2>
+                        <SheetMusicList onSelect={setSelectedId} />
+                        {selectedId && <SheetMusicDetail id={selectedId} />}
+                    </div>
+                )}
+            </main>
+        </div>
+    )
 }
 
 export default App

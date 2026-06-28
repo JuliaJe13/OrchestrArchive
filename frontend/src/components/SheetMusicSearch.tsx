@@ -5,6 +5,7 @@ import {
     searchSheetMusicByComposer, searchSheetMusicByPublisher,
     searchSheetMusicByTitle
 } from "../api/orchestrArchiveApi.ts";
+import SheetMusicDetail from "./SheetMusicDetail"
 
 
 function SheetMusicSearch() {
@@ -12,7 +13,8 @@ function SheetMusicSearch() {
     const [results, setResults] = useState<SheetMusic[]>([])
     const [loading, setLoading] =useState(false)
     const [error, setError] = useState<string | null>(null)
-
+    const [selectedId, setSelectedId] = useState<number | null>(null)
+    
     function handleSearch() {
         setLoading(true)
 
@@ -58,9 +60,12 @@ function SheetMusicSearch() {
                         {' - '}{obj.composer}
                         {' ('}{obj.year}{')'}
                         {' - '}{obj.level}
+                        <button onClick={() => setSelectedId(obj.id)}>Details</button>
                     </li>
                 ))}
             </ul>
+
+            {selectedId && <SheetMusicDetail id={selectedId} />}
         </div>
     )
 }
