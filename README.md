@@ -42,6 +42,16 @@ OrchestrArchive/
 ### Option 1: Docker
 Prerequisites: Docker Desktop
 
+(## Windows-User
+If `./mvnw package` has the wrong Java version --> Java 21 needs to be set explicitely
+
+```powershell
+$env:JAVA_HOME = "C:\path\to\Java21"
+$env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+```
+
+precise path **File → Project Structure → SDKs**.)
+
 ```bash
 # 1. Build backend
 ./mvnw package -DskipTests
@@ -50,7 +60,7 @@ Prerequisites: Docker Desktop
 cd frontend && npm run build && cd ..
 
 # 3. Start everything
-docker compose up
+docker compose up --build -d
 ```
 App runs on http://localhost
 
@@ -82,4 +92,8 @@ Swagger UI: http://localhost:8080/swagger-ui.html
 ## Running Tests
 ```bash
 ./mvnw test
+```
+If Maven installed:
+```bash
+mvn test
 ```
