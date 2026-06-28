@@ -77,4 +77,20 @@ public class CategoryServiceTest {
 
         assertThat(result).isTrue();
     }
+
+    @Test
+    void shouldUpdateCategory() {
+        // Arrange
+        Category existing = new Category("Marsch", "Alt");
+        Category updated = new Category("Marsch", "Neu");
+
+        when(repository.findById(1L)).thenReturn(Optional.of(existing));
+        when(repository.save(any())).thenReturn(updated);
+
+        Optional<Category> result = service.update(1L, updated);
+
+        assertThat(result).isPresent();
+        assertThat(result.get().getDescription()).isEqualTo("Neu");
+    }
+
 }

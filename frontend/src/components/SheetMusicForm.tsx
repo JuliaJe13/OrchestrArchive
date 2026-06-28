@@ -95,7 +95,22 @@ function SheetMusicForm() {
                 <input value={arranger} onChange={(e) => setArranger(e.target.value)} />
             </label>
             <label>Jahr
-                <input type="number" min="1000" max="2030" value={year === 0 ? '' : year} onChange={(e) => setYear(Number(e.target.value))} onFocus={() => { if (year === 0) setYear(1700) }} placeholder="z.B. 1889" />
+                <input
+                    type="number"
+                    min="1600"
+                    max="2030"
+                    value={year === 0 ? '' : year}
+                    onChange={(e) => {
+                        const val = e.target.value
+                        if (val === '') {
+                            setYear(0)
+                        } else {
+                            setYear(Number(val))
+                        }
+                    }}
+                    onFocus={() => { if (year === 0) setYear(1700) }}
+                    placeholder="z.B. 1889"
+                />
             </label>
             <label>Verlag
                 <input value={publisher} onChange={(e) => setPublisher(e.target.value)} />
@@ -114,7 +129,7 @@ function SheetMusicForm() {
             </button>
             {success && <p>Notensatz gespeichert!</p>}
 
-            <div>
+            <div className="categories-grid">
                 <p>Kategorien:</p>
                 {categories.map((cat) => (
                     <label key={cat.id}>
