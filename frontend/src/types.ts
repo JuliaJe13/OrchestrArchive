@@ -48,3 +48,18 @@ export interface VoicePartInput {
     sheetCount: number
     sheetMusic: SheetMusic
 }
+
+export interface MusicBrainzArtist {
+    name: string
+}
+
+export interface MusicBrainzRelation {
+    type: string
+    artist: MusicBrainzArtist | null
+}
+
+export interface MusicBrainzWork {
+    id: string
+    title: string
+    relations: MusicBrainzRelation[]
+}

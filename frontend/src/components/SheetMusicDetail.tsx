@@ -61,7 +61,8 @@ function SheetMusicDetail({ id }: SheetMusicDetailProps) {
             <p>Komponist: {sheetMusic.composer}</p>
             <p>Arrangeur: {sheetMusic.arranger}</p>
             <p>Jahr: {sheetMusic.year}</p>
-            <p>Verlag: {sheetMusic.publisher}</p>
+            {/* publisher unnecessairy for now*/}
+            {/* <p>Verlag: {sheetMusic.publisher}</p> */}
             <p>Schwierigkeit: {sheetMusic.level}</p>
 
             <h4>Stimme</h4>

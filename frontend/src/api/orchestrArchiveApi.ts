@@ -1,4 +1,7 @@
-import type { Category, CategoryInput, SheetMusic, SheetMusicInput, VoicePart, VoicePartInput, DifficultyLevel } from '../types'
+import type {
+    Category, CategoryInput, SheetMusic, SheetMusicInput, VoicePart, VoicePartInput, DifficultyLevel,
+    MusicBrainzWork
+} from '../types'
 
 const BASE = '/api'
 
@@ -131,4 +134,10 @@ export function searchVoicePartsByInstrument(instrument: string): Promise<VoiceP
 }
 export function searchVoicePartsByInstrumentGroup(instrumentGroup: string): Promise<VoicePart[]> {
     return fetch(`${BASE}/voice-parts/search/instrument-group?instrumentgroup=${encodeURIComponent(instrumentGroup)}`).then((res) => handle<VoicePart[]>(res))
+}
+
+// MusicBrainz: Add SheetMusic
+export function searchMusicBrainz(title: string): Promise<MusicBrainzWork[]> {
+    return fetch(`${BASE}/music-search?title=${encodeURIComponent(title)}`)
+        .then((res) => handle<MusicBrainzWork[]>(res))
 }
