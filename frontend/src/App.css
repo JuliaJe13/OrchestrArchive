@@ -237,20 +237,35 @@ li:last-child {
 
 /* Kategorien Checkboxen */
 .categories-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-top: 4px;
+}
+
+.categories-grid input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
 }
 
 .categories-grid label {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
   gap: 6px;
   font-size: 0.85rem;
   color: #aaa;
   cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #2d2d4e;
+  transition: background 0.15s;
+}
+
+.categories-grid label:hover {
+  background: #2d2d4e;
 }
 
 /* Error & Success */
