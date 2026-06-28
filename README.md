@@ -7,11 +7,18 @@ OrchestrArchive allows orchestras to manage their sheet music library.
 Users can organize pieces by category, track individual voice parts,
 and search for music information using the MusicBrainz API.
 
+## Future Development
+The Website has a lot of potential in expanding the functions and adding more.
+  - adding an upload for all the sheet musics voice parts as PDFs
+  - adding voice parts to new sheet musics
+  - adding keycloak for security
+  - ...
+
 ## Architecture
-- **Backend:** Spring Boot 4, Java 21, Spring Data JPA
-- **Database:** H2 (development)
-- **Frontend:** React with TypeScript (Vite)
-- **API Documentation:** Swagger UI available at `/swagger-ui.html`
+- Backend: Spring Boot 4, Java 21, Spring Data JPA
+- Database: PostgreSQL (production via Docker), H2 (development)
+- Frontend: React with TypeScript (Vite)
+- API Documentation: Swagger UI available at `/swagger-ui.html`
 
 ### Project Structure
 OrchestrArchive/
@@ -32,8 +39,8 @@ OrchestrArchive/
 
 ## Getting Started
 
-### Option 1: Docker (recommended)
-**Prerequisites:** Docker Desktop
+### Option 1: Docker
+Prerequisites: Docker Desktop
 
 ```bash
 # 1. Build backend
@@ -48,7 +55,7 @@ docker compose up
 App runs on http://localhost
 
 ### Option 2: Local Development
-**Prerequisites:** Java 21, Node.js 20+
+Prerequisites: Java 21, Node.js 20+
 
 ```bash
 # Backend
@@ -65,7 +72,7 @@ npm run dev
 Frontend: http://localhost:5173
 
 ## Third-Party APIs
-- **MusicBrainz API** (https://musicbrainz.org/doc/MusicBrainz_API)  
+- MusicBrainz API (https://musicbrainz.org/doc/MusicBrainz_API)  
   Used for searching sheet music metadata like composer and title information.
   No API key required.
 
@@ -74,5 +81,5 @@ Swagger UI: http://localhost:8080/swagger-ui.html
 
 ## Running Tests
 ```bash
-mvn test
+./mvnw test
 ```
