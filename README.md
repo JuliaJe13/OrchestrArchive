@@ -66,12 +66,14 @@ App runs on http://localhost
 
 ### Option 2: Local Development
 Prerequisites: Java 21, Node.js 20+
+ake sure Java 21 is active.
 
 ```bash
 # Backend
 ./mvnw spring-boot:run
 ```
 Backend: http://localhost:8080
+example: http://localhost:8080/api/categories
 
 ```bash
 # Frontend (separate terminal)
